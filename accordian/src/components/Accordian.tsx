@@ -21,7 +21,7 @@ const Accordian = () => {
        {data.map((item,i) => (
         <div key={i} className='border-b'>
           <p>{item?.title}</p>
-          <button className='' onClick={() => toggle(i)}>+</button>
+          <button className='' onClick={() => toggle(i)}>{openIndex === i ? '-' : '+'}</button>
           {openIndex === i && (
           <div className='p-4 text-gray-400 border-2'>{item?.content}</div>
         )}
