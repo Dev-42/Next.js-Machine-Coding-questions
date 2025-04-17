@@ -19,6 +19,9 @@ const ImageSlider = () => {
 
   useEffect(() => {
     fetchData()
+    // setInterval(() => {
+    //   handleNextImage()
+    // },1000)
   },[])
   const lengthOfData = data.length
 
@@ -27,12 +30,12 @@ const ImageSlider = () => {
         setImageIndex(0)
     }
     else{
-        setImageIndex(imageIndex+1)
+        setImageIndex((prevImageIndex) => prevImageIndex + 1)
     }
   }
   const handlePrevImage = () => {
     if(imageIndex > 0){
-        setImageIndex(imageIndex - 1)
+        setImageIndex((prevImageIndex) => prevImageIndex - 1)
     }
   }
   return (
