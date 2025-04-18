@@ -10,10 +10,11 @@ type ImageData = {
 
 type PostProps = {
     data:ImageData[],
-    setPageNo:React.Dispatch<React.SetStateAction<number>>;
+    setPageNo:React.Dispatch<React.SetStateAction<number>>,
+    loading:boolean
 }
 
-const Post = ({data,setPageNo} : PostProps) => {
+const Post = ({data,setPageNo,loading} : PostProps) => {
 
   useEffect(() => {
      const images = document.querySelectorAll(".image-post")
@@ -39,6 +40,12 @@ const Post = ({data,setPageNo} : PostProps) => {
   },[data])  
   return (
     <div>
+        {loading && (
+        <div className="text-center my-4">
+            <span className="animate-spin inline-block w-6 h-6 border-4 border-t-transparent border-blue-500 rounded-full"></span>
+            <p className="text-sm text-gray-500 mt-2">Loading more...</p>
+        </div>
+        )}
         {
             data.length > 0 && (
                 data.map((item) => (
